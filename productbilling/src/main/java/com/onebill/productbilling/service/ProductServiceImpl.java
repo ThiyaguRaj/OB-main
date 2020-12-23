@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onebill.productbilling.dao.ProductDao;
+import com.onebill.productbilling.dto.PlanChargeRespDto;
 import com.onebill.productbilling.dto.PlanDetailRespDto;
+import com.onebill.productbilling.dto.PlanOverdueRespDto;
 import com.onebill.productbilling.dto.PlanRespDto;
 import com.onebill.productbilling.dto.ProductDto;
 import com.onebill.productbilling.exception.BillingException;
@@ -143,6 +145,18 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			throw new BillingException("No details available for this plan id ("+planId+") of product ID ("+productId+")");
 		}
+	}
+
+	@Override
+	public List<PlanChargeRespDto> getPlanCharge(int productId, int planId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanOverdueRespDto> getPlanOverdue(int productId, int planId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

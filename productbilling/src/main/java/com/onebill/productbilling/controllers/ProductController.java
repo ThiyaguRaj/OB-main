@@ -51,17 +51,17 @@ public class ProductController {
 		return dto;
 	}
 
-	@GetMapping("product/{productId}/plan/{planId}/detail")
+	@GetMapping("product/{productId}/plan/{planId}/charge")
 	public ResponseDto getPlanCharge(@PathVariable int productId, @PathVariable int planId) {
 		ResponseDto dto = new ResponseDto();
-		dto.setData(service.getPlanDetail(productId, planId));
+		dto.setData(service.getPlanCharge(productId, planId));
 		return dto;
 	}
 
-	@GetMapping("product/{productId}/plan/{planId}/detail")
+	@GetMapping("product/{productId}/plan/{planId}/overdue")
 	public ResponseDto getPlanOverdue(@PathVariable int productId, @PathVariable int planId) {
 		ResponseDto dto = new ResponseDto();
-		dto.setData(service.getPlanDetail(productId, planId));
+		dto.setData(service.getPlanOverdue(productId, planId));
 		return dto;
 	}
 

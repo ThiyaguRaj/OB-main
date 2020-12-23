@@ -15,9 +15,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
 import com.onebill.productbilling.Entities.Plan;
+import com.onebill.productbilling.Entities.PlanCharge;
 import com.onebill.productbilling.Entities.PlanDetail;
+import com.onebill.productbilling.Entities.PlanOverdue;
 import com.onebill.productbilling.Entities.Product;
+import com.onebill.productbilling.dto.PlanChargeRespDto;
 import com.onebill.productbilling.dto.PlanDetailRespDto;
+import com.onebill.productbilling.dto.PlanOverdueRespDto;
 import com.onebill.productbilling.dto.PlanRespDto;
 import com.onebill.productbilling.dto.ProductDto;
 
@@ -126,6 +130,35 @@ public class ProductDaoImpl implements ProductDao {
 		Type listType = new TypeToken<List<PlanDetailRespDto>>() {
 		}.getType();
 		return mapper.map(list, listType);
+	}
+
+	@Override
+	public List<PlanChargeRespDto> getPlanCharge(int productId, int planId) {
+		Plan p = new Plan();
+		p.setPlanId(planId);
+		TypedQuery<PlanCharge> query = manager.createQuery("from PlanCharge P where P.plan=:value", PlanCharge.class);
+		query.setParameter("value", p);
+		List<PlanCharge> list = query.getResultList();
+		ModelMapper mapper = new ModelMapper();
+		Type listType = new TypeToken<List<PlanChargeRespDto>>() {
+		}.getType();
+		List<PlanChargeRespDto> dto = mapper.map(list, listType);
+		return dto;
+	}
+
+	@Override
+	public List<PlanOverdueRespDto> getPlanOverdue(int productId, int planId) {
+		Plan p = new Plan();
+		p.setPlanId(planId);
+		TypedQuery<PlanOverdue> query = manager.createQuery("from PlanOverdue P where P.plan=:value",
+				PlanOverdue.class);
+		query.setParameter("value", p);
+		List<PlanOverdue> list = query.getResultList();
+		ModelMapper mapper = new ModelMapper();
+		Type listType = new TypeToken<List<PlanOverdueRespDto>>() {
+		}.getType();
+		List<PlanOverdueRespDto> dto = mapper.map(list, listType);
+		return dto;
 	}
 
 }

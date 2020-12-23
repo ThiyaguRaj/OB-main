@@ -264,7 +264,7 @@ public class PlanServiceImpl implements PlanService {
 			}else {
 				throw new BillingException("Failed to add overdue details of input type (" + plan.getOverageType()
 				+ ") and service (" + plan.getOverageService() + ") of unit (" + plan.getUnit() + ") and cost ("
-				+ plan.getServiceCost() + ") for plan. Please verify all the details. Please verify all the details");
+				+ plan.getServiceCost() + ") for plan. Please verify all the details");
 			}
 		}
 	}
