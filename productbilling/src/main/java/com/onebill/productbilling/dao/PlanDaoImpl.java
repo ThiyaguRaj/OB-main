@@ -39,10 +39,14 @@ public class PlanDaoImpl implements PlanDao {
 	public PlanRespDto addPlan(PlanDto plan) {
 		Plan p = new Plan();
 		BeanUtils.copyProperties(plan, p);
-		manager.persist(p);
-		PlanRespDto dto = new PlanRespDto();
-		BeanUtils.copyProperties(p, dto);
-		return dto;
+		if(p.getPlanAmount()==0.0 || p.getPlanFrequency()==0) {
+			return null;
+		}else {
+			manager.persist(p);
+			PlanRespDto dto = new PlanRespDto();
+			BeanUtils.copyProperties(p, dto);
+			return dto;
+		}
 	}
 
 	@Override
@@ -113,6 +117,24 @@ public class PlanDaoImpl implements PlanDao {
 			PlanDetailRespDto dto = new PlanDetailRespDto();
 			BeanUtils.copyProperties(detail, dto);
 			return dto;
+////		
+//		PlanDetail det = new PlanDetail();
+//		TypedQuery<PlanDetail> q=manager.createQuery("from PlanDetail P where P.plan=:value and P.serviceType=:type",PlanDetail.class);
+//		q.setParameter("value", detail.getPlan());
+//		q.setParameter("type", detail.getServiceType());
+//		PlanDetail de=q.getSingleResult();
+////		System.out.println(de);
+//		if(de==null) {
+//			BeanUtils.copyProperties(detail, det);
+//			manager.merge(det);
+//			PlanDetailRespDto dto = new PlanDetailRespDto();
+//			BeanUtils.copyProperties(detail, dto);
+//			return dto;
+//		}else {
+//			return null;
+//		}
+		
+		
 	}
 
 	@Override

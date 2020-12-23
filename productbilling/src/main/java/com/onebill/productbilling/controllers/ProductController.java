@@ -37,7 +37,7 @@ public class ProductController {
 		return dto;
 	}
 
-	@GetMapping("/plan/{productId}")
+	@GetMapping("/product/{productId}/plan")
 	public ResponseDto getProductPlan(@PathVariable int productId) {
 		ResponseDto dto = new ResponseDto();
 		dto.setData(service.getProductPlan(productId));

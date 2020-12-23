@@ -149,14 +149,33 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<PlanChargeRespDto> getPlanCharge(int productId, int planId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<PlanChargeRespDto> detail = null;
+		try {
+			detail = dao.getPlanCharge(productId,planId);
+			if(!detail.isEmpty()) {
+				return detail;
+			}else {
+				throw new BillingException("No charges available");
+			}
+		} catch (Exception e) {
+			throw new BillingException("No Extra charges available for this plan");
+		}
 	}
 
 	@Override
 	public List<PlanOverdueRespDto> getPlanOverdue(int productId, int planId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<PlanOverdueRespDto> due = null;
+		try {
+			due = dao.getPlanOverdue(productId,planId);
+			if(due.isEmpty()) {
+				throw new BillingException("No overdue available for this plan");
+			}else {
+				return due;
+			}
+		} catch (Exception e) {
+			throw new BillingException("No overdue details available for this plan "+planId);
+		}
+
 	}
 
 }

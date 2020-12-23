@@ -20,7 +20,7 @@ import lombok.Data;
 public class PlanDetail {
 
 	@Id
-	@Column(name = "service_type")
+	@Column(name = "service_type",length = 30)
 	private String serviceType;
 
 	@NotNull
@@ -28,7 +28,7 @@ public class PlanDetail {
 	private int detail;
 
 	@NotNull
-	@Column(name = "unit")
+	@Column(name = "unit",length = 10)
 	private String unit;
 
 	@Id

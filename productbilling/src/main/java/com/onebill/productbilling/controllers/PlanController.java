@@ -63,7 +63,6 @@ public class PlanController {
 
 	@PostMapping("/detail")
 	public ResponseDto addPlanDetail(@RequestBody PlanDetailDto detail) {
-		System.out.println(detail);
 		ResponseDto dto = new ResponseDto();
 		dto.setData(service.addPlanDetail(detail));
 		return dto;

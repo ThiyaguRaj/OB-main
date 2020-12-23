@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.onebill.productbilling.dao.ProductDao;
+import com.onebill.productbilling.dto.PlanChargeRespDto;
+import com.onebill.productbilling.dto.PlanDetailRespDto;
+import com.onebill.productbilling.dto.PlanOverdueRespDto;
 import com.onebill.productbilling.dto.PlanRespDto;
 import com.onebill.productbilling.dto.ProductDto;
 
@@ -66,6 +69,24 @@ public class ProductDaoTestStub implements ProductDao {
 
 	@Override
 	public List<PlanRespDto> getProductPlan(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanDetailRespDto> getPlanDetail(int productId, int planId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanChargeRespDto> getPlanCharge(int productId, int planId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanOverdueRespDto> getPlanOverdue(int productId, int planId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

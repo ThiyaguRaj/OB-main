@@ -24,7 +24,6 @@ public class PlanServiceImpl implements PlanService {
 
 	@Override
 	public PlanRespDto addPlan(PlanDto plan) {
-		System.out.println(plan);
 		PlanRespDto plan1 = null;
 		try {
 
@@ -177,11 +176,15 @@ public class PlanServiceImpl implements PlanService {
 	public PlanChargeRespDto addPlanCharge(PlanChargeDto plan) {
 		PlanChargeRespDto charge = null;
 		try {
-			charge = dao.addPlanCharge(plan);
-			if(charge!=null) {
-				return charge;
+			if(plan.getCharge()!=0.0) {
+				charge = dao.addPlanCharge(plan);
+				if(charge!=null) {
+					return charge;
+				}else {
+					throw new BillingException("Failed to add plan charge details for given null values");
+				}
 			}else {
-				throw new BillingException("Failed to add plan charge details for given null values");
+				throw new BillingException("Failed to add plan charge details for given null charge");
 			}
 		} catch (Exception e) {
 			if(plan.getChargeType()==null) {

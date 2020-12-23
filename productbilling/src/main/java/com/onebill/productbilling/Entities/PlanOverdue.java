@@ -20,7 +20,7 @@ import lombok.Data;
 public class PlanOverdue {
 
 	@Id
-	@Column(name = "overage_type")
+	@Column(name = "overage_type",length = 30)
 	private String overageType;
 
 	@NotNull
@@ -32,7 +32,7 @@ public class PlanOverdue {
 	private double serviceCost;
 
 	@NotNull
-	@Column(name = "unit")
+	@Column(name = "unit",length = 10)
 	private String unit;
 
 	@Id 
